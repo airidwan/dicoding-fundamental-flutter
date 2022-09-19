@@ -1,4 +1,4 @@
-package com.ridwansubmission.dicoding.submission_restaurantapp
+package com.ridwansubmission.dicoding_submission_b
 
 import io.flutter.embedding.android.FlutterActivity
 
