@@ -1,12 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:submission_restaurantapp/data/app_configs.dart';
-import 'package:submission_restaurantapp/data/routes_nav.dart';
-import 'package:submission_restaurantapp/view/home_view.dart';
-import 'package:submission_restaurantapp/view/restaurant_detail_view.dart';
-import 'package:submission_restaurantapp/data/restaurant_model.dart';
-import 'package:submission_restaurantapp/view/splashscreen_view.dart';
+import 'package:get/get.dart';
+import 'package:submission_restaurantapp/app/data/configs/app_themes.dart';
+import 'package:submission_restaurantapp/app/data/services/get_logger_service.dart';
+import 'package:submission_restaurantapp/hive_helper/hive_services.dart';
+import 'app/controllers/app_controller.dart';
+import 'app/routes/app_pages.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-void main() {
+void main() async {
+  await _initApps();
   runApp(const MyApp());
 }
 
@@ -15,25 +18,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Restaurants App',
-      theme: ThemeData(
-        primarySwatch: AppColors.primaryMaterialColor,
-      ),
-      initialRoute: RoutesName.splashScreen,
-      routes: {
-        RoutesName.home: (context) => const HomeView(),
-        RoutesName.splashScreen: (context) => const SplashscreenView(),
-        RoutesName.restauranDetail: (context) => RestaurantDetailView(data: ModalRoute.of(context)?.settings.arguments as RestaurantModel),
-      },
-      onGenerateRoute: (settings) {
-        if (settings.name == '/') {
-          return MaterialPageRoute(
-            builder: (context) => HomeView(),
-            settings: settings,
-          );
-        }
-      },
+    return GetMaterialApp(
+      initialRoute: Routes.SPLASH_SCREEN,
+      theme: AppThemes.theme,
+      getPages: AppPages.routes,
+      logWriterCallback: GetLoggerService.instance.logWriter,
     );
   }
+}
+
+_initApps() async {
+  WidgetsBinding widgetBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetBinding);
+  CachedNetworkImage.logLevel = CacheManagerLogLevel.debug;
+  await HiveServices.instance.init();
+  Get.put<AppController>(AppController(), permanent: true);
 }

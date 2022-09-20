@@ -335,13 +335,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.9"
-  flutter_rating_bar:
-    dependency: "direct main"
-    description:
-      name: flutter_rating_bar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -373,13 +366,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.6.5"
-  getxbottombar:
-    dependency: "direct main"
-    description:
-      name: getxbottombar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.1"
   glob:
     dependency: transitive
     description:
