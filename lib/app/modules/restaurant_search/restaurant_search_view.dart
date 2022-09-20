@@ -20,6 +20,7 @@ class RestaurantSearchView extends GetView<RestaurantSearchController> {
     return AppBar(
       title: SearchInputWidget(
         onSubmitted: controller.onSubmit,
+        controller: controller.inputController,
       ),
       automaticallyImplyLeading: false,
       backgroundColor: Colors.white,
@@ -33,6 +34,9 @@ class RestaurantSearchView extends GetView<RestaurantSearchController> {
         alignment: Alignment.center,
         child: LoadingWidget(),
       ),
+      onEmpty: AppEmptyWidget(
+        message: 'Data yang dicari tidak ditemukan',
+      ),
       onError: (error) => Container(
         alignment: Alignment.center,
         child: AppErrorWidget(message: error ?? ''),
@@ -44,6 +48,7 @@ class RestaurantSearchView extends GetView<RestaurantSearchController> {
     return GetBuilder<RestaurantSearchController>(
       builder: ((_) {
         final _dataList = controller.data.value.data ?? [];
+        if (_dataList.isEmpty) return Container();
         return ListView.builder(
           itemCount: _dataList.length,
           shrinkWrap: true,

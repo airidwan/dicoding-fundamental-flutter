@@ -63,7 +63,8 @@ class _SearchInputWidgetState extends State<SearchInputWidget> {
             if (widget.onChanged != null) widget.onChanged!(controller.text);
           },
           decoration: InputDecoration(
-              hintText: 'Pencarian',
+              hintText: 'Pencarian: Nama restoran / menu',
+              hintStyle: TextStyle(fontSize: 12,color: Colors.grey),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),

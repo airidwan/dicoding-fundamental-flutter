@@ -1,14 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'index.dart';
 
 class ApiresultModel<T> {
   final bool error;
   final String message;
   final int count;
-   T? data;
+  final int founded;
+  T? data;
   ApiresultModel({
     this.error = false,
     this.message = '',
     this.count = 0,
+    this.founded = 0,
     this.data,
   });
 
@@ -17,6 +20,7 @@ class ApiresultModel<T> {
       'error': error,
       'message': message,
       'count': count,
+      'founded': founded,
     };
   }
 
@@ -25,6 +29,7 @@ class ApiresultModel<T> {
       error: map['error'] ?? false,
       message: map['message'] ?? '',
       count: map['count'] ?? 0,
+      founded: map['founded'] ?? 0,
     );
   }
 
