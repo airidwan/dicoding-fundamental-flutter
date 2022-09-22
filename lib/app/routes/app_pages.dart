@@ -49,6 +49,8 @@ class AppPages {
       middlewares: [GlobalMiddleware()],
       page: () => const RestaurantDetailView(),
       binding: RestaurantDetailBinding(),
+      transition: Transition.downToUp,
+      transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       name: _Paths.RESTAURANT_FAVORITES,

@@ -111,7 +111,6 @@ class ProfileView extends GetView<ProfileController> {
       color: Colors.white,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        // color: Colors.white,
         width: Get.width,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

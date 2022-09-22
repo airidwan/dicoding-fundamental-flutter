@@ -9,7 +9,7 @@ class AppThemes {
     primarySwatch: AppColors.primaryMaterialColor,
     fontFamily: GoogleFonts.roboto().fontFamily,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    appBarTheme: const AppBarTheme(elevation: 3),
+    appBarTheme: const AppBarTheme(elevation: 3, toolbarHeight: 50),
   );
 
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
@@ -21,6 +21,5 @@ class AppThemes {
           brightness: Brightness.dark,
         ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    appBarTheme: const AppBarTheme(elevation: 3),
   );
 }

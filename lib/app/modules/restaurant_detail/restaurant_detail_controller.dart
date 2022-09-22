@@ -20,14 +20,19 @@ class RestaurantDetailController extends GetxController with StateMixin {
   final reviewController = TextEditingController();
 
   @override
-  void onInit() {
+  void onInit() async {
     data(Get.arguments);
     super.onInit();
-    firstInit();
   }
 
   @override
-  void onClose() {
+  void onReady() async {
+    firstInit();
+    super.onReady();
+  }
+
+  @override
+  void onClose() async {
     super.onClose();
     appScroll.dispose();
     nameController.dispose();
@@ -51,11 +56,11 @@ class RestaurantDetailController extends GetxController with StateMixin {
     update();
   }
 
-  Future refreshData() async {
+  Future<void> refreshData() async {
     isFirtloading(false);
     change(null, status: RxStatus.loading());
     apiStatus(XStatus.loading);
-    await getRestaurantDetailById();
+    getRestaurantDetailById();
   }
 
   Future firstInit() async {

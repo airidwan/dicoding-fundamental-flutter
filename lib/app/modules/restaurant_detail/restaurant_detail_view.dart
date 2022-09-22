@@ -69,16 +69,15 @@ class RestaurantDetailView extends GetView<RestaurantDetailController> {
                   ],
                   title: !scrolled ? null : data.name.text.make(),
                   automaticallyImplyLeading: scrolled,
-                  expandedHeight: Get.height * .285,
+                  expandedHeight: Get.height * .275,
                   pinned: true,
-                  floating: false,
-                  snap: false,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Hero(
                       tag: data.id,
                       child: ImageNetworkWidget(
                         imageUrl: ApiKeys.urlImageLarge(data.pictureId),
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
+                        width: Get.width,
                       ),
                     ),
                   ),

@@ -18,8 +18,6 @@ class SearchInputWidget extends StatefulWidget {
     this.onSubmitted,
     this.onClearText,
     this.margin,
-    // this.textInputAction,
-    // this.onTap,
     this.enable,
     this.autofocus,
     this.focusNode,

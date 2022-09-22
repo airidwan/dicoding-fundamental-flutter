@@ -24,6 +24,7 @@ class RestaurantSearchView extends GetView<RestaurantSearchController> {
       ),
       automaticallyImplyLeading: false,
       backgroundColor: Colors.white,
+      elevation: 0.5,
     );
   }
 

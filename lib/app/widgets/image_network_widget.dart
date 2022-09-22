@@ -8,7 +8,6 @@ class ImageNetworkWidget extends StatelessWidget {
   final String imageUrl;
   final Widget? loadingImage;
   final Widget? erroroWidget;
-  final Widget? placeHolderWidget;
   final BoxFit fit;
   final double? height;
   final double? width;
@@ -17,7 +16,6 @@ class ImageNetworkWidget extends StatelessWidget {
     this.imageUrl = '',
     this.loadingImage,
     this.erroroWidget,
-    this.placeHolderWidget,
     this.fit = BoxFit.fill,
     this.height,
     this.width,

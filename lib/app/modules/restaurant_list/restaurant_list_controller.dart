@@ -55,6 +55,6 @@ class RestaurantListController extends GetxController with StateMixin {
   }
 
   Future refreshData() async {
-    await getRestaurantList();
+    getRestaurantList();
   }
 }

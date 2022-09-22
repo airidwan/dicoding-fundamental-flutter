@@ -28,6 +28,7 @@ class RestaurantListView extends GetView<RestaurantListController> {
   AppBar _buildAppbar() {
     return AppBar(
       title: 'Restaurant List'.text.make(),
+      centerTitle: true,
       actions: [
         IconButton(
           padding: EdgeInsets.zero,
@@ -43,7 +44,7 @@ class RestaurantListView extends GetView<RestaurantListController> {
 
   Widget _buildBody(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: () => controller.refreshData(),
+      onRefresh: controller.refreshData,
       child: SingleChildScrollView(
         controller: controller.appScroll.scrollController,
         physics: const AlwaysScrollableScrollPhysics(),
