@@ -1,3 +1,3 @@
 class HiveTypes {
-	static const int restaourantFavModel = 0;
+  static const int restaourantFavModel = 0;
 }

@@ -41,7 +41,10 @@ class RestaurantFavoritesView extends GetView<RestaurantFavoritesController> {
                 dataItem: _item,
                 onTap: () => controller.navToDetail(_item),
                 iconOnpressed: () => controller.onPressedFavButton(_item),
-                iconButton: Icon(Icons.delete_outlined),
+                iconButton: Icon(
+                  Icons.delete,
+                  color: Colors.grey,
+                ),
               );
             },
           );

@@ -7,7 +7,6 @@ class SearchInputWidget extends StatefulWidget {
   final ValueChanged<String>? onSubmitted;
   final VoidCallback? onClearText;
   final EdgeInsetsGeometry? margin;
-  final TextInputAction? textInputAction;
   final bool? enable;
   final bool? autofocus;
   final FocusNode? focusNode;
@@ -19,7 +18,8 @@ class SearchInputWidget extends StatefulWidget {
     this.onSubmitted,
     this.onClearText,
     this.margin,
-    this.textInputAction,
+    // this.textInputAction,
+    // this.onTap,
     this.enable,
     this.autofocus,
     this.focusNode,
@@ -64,7 +64,7 @@ class _SearchInputWidgetState extends State<SearchInputWidget> {
           },
           decoration: InputDecoration(
               hintText: 'Pencarian: Nama restoran / menu',
-              hintStyle: TextStyle(fontSize: 12,color: Colors.grey),
+              hintStyle: TextStyle(fontSize: 12, color: Colors.grey),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -96,6 +96,4 @@ class _SearchInputWidgetState extends State<SearchInputWidget> {
       ),
     );
   }
-
-
 }

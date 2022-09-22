@@ -10,10 +10,10 @@ class BtnToTopWidget extends StatelessWidget {
     return FloatingActionButton(
       onPressed: onPressed,
       mini: true,
+      backgroundColor: AppColors.primaryColor,
       child: Center(
         child: Icon(Icons.keyboard_arrow_up),
       ),
-      backgroundColor: AppColors.primaryColor,
     );
   }
 }

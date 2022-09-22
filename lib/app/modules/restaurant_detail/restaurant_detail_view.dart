@@ -79,7 +79,6 @@ class RestaurantDetailView extends GetView<RestaurantDetailController> {
                       child: ImageNetworkWidget(
                         imageUrl: ApiKeys.urlImageLarge(data.pictureId),
                         fit: BoxFit.fill,
-                        // height: Get.height * .30,
                       ),
                     ),
                   ),
@@ -98,7 +97,7 @@ class RestaurantDetailView extends GetView<RestaurantDetailController> {
                     textTitle: data.city,
                   ),
                   5.heightBox,
-                  '${data.address}'.text.sm.make(),
+                  data.address.text.sm.make(),
                   5.heightBox,
                   AppRatingWidget(rating: data.rating),
                   5.heightBox,
@@ -120,26 +119,20 @@ class RestaurantDetailView extends GetView<RestaurantDetailController> {
                   10.heightBox,
                   LoadingViewWidget(
                     status: controller.apiStatus.value,
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          RestaurantMenusWidget(),
-                          5.heightBox,
-                          RestaurantReviewWidget(datalist: data.customerReviews),
-                        ],
-                      ),
-                    ),
                     onLoading: Container().skeleton(height: Get.height * .35),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RestaurantMenusWidget(),
+                        5.heightBox,
+                        RestaurantReviewWidget(datalist: data.customerReviews),
+                      ],
+                    ),
                   ),
                   30.heightBox,
                 ],
               ),
             ),
-            // SliverFillRemaining(
-            //   // hasScrollBody: true,
-            //   // child: RestaurantReviewWidget(),
-            // ),
           ],
         );
       },

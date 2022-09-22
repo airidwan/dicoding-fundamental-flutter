@@ -5,6 +5,8 @@ import 'package:velocity_x/velocity_x.dart';
 import '../restaurant_detail_controller.dart';
 
 class ReviewInputWidget extends GetWidget<RestaurantDetailController> {
+  const ReviewInputWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,22 +19,20 @@ class ReviewInputWidget extends GetWidget<RestaurantDetailController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               20.heightBox,
-              Container(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints.tightFor(height: 35, width: Get.width * .40),
-                  child: TextField(
-                    controller: controller.nameController,
-                    style: TextStyle(fontSize: 12),
-                    autofocus: true,
-                    decoration: InputDecoration(
-                      labelText: 'Nama',
-                      labelStyle: TextStyle(fontSize: 12),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      contentPadding: EdgeInsets.all(8),
+              ConstrainedBox(
+                constraints: BoxConstraints.tightFor(height: 35, width: Get.width * .40),
+                child: TextField(
+                  controller: controller.nameController,
+                  style: TextStyle(fontSize: 12),
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    labelText: 'Nama',
+                    labelStyle: TextStyle(fontSize: 12),
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
+                    contentPadding: EdgeInsets.all(8),
                   ),
                 ),
               ),
@@ -58,11 +58,8 @@ class ReviewInputWidget extends GetWidget<RestaurantDetailController> {
               5.heightBox,
               ElevatedButton(
                 onPressed: () => controller.submitReview(),
+                style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2), fixedSize: const Size(150, 35)),
                 child: 'Submit'.text.make(),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-                  fixedSize: const Size(150, 35)
-                ),
               )
             ],
           ),

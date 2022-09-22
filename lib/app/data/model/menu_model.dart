@@ -1,8 +1,8 @@
 part of 'index.dart';
 
 class MenuModel {
-  List<FoodModel> foods;
-  List<DrinkModel> drinks;
+  List<DrinkFoodModel> foods;
+  List<DrinkFoodModel> drinks;
   MenuModel({
     this.foods = const [],
     this.drinks = const [],
@@ -17,14 +17,14 @@ class MenuModel {
 
   factory MenuModel.fromMap(Map<String, dynamic> map) {
     return MenuModel(
-      foods: List<FoodModel>.from(
-        map['foods']?.map<FoodModel>(
-          (x) => FoodModel.fromMap(x as Map<String, dynamic>),
+      foods: List<DrinkFoodModel>.from(
+        map['foods']?.map<DrinkFoodModel>(
+          (x) => DrinkFoodModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
-      drinks: List<DrinkModel>.from(
-        map['drinks']?.map<DrinkModel>(
-          (x) => DrinkModel.fromMap(x as Map<String, dynamic>),
+      drinks: List<DrinkFoodModel>.from(
+        map['drinks']?.map<DrinkFoodModel>(
+          (x) => DrinkFoodModel.fromMap(x as Map<String, dynamic>),
         ),
       ),
     );

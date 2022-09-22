@@ -21,17 +21,17 @@ class AppScrollController extends GetxController {
   setScrollListener() {
     scrollController = ScrollController()
       ..addListener(() {
-        final _direction = scrollController.position.userScrollDirection;
-        if (_direction == ScrollDirection.forward) {
+        final direction = scrollController.position.userScrollDirection;
+        if (direction == ScrollDirection.forward) {
           isShow(true);
-        } else if (_direction == ScrollDirection.reverse) {
+        } else if (direction == ScrollDirection.reverse) {
           isShow(false);
         }
       });
   }
 
   scrollToTop() async {
-    await scrollController.animateTo(0, duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+    await scrollController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
     isShow(false);
   }
 }

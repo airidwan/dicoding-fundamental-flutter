@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_getters_setters
+
 part of 'index.dart';
 
 class RestaurantModel {
@@ -14,7 +16,7 @@ class RestaurantModel {
 
   late bool _isFav = LocalFavServices.instance.isFav(id);
   bool get isFav => _isFav;
-  set isFav(bool newValue) =>_isFav = newValue;
+  set isFav(bool newValue) => _isFav = newValue;
 
   RestaurantModel({
     this.id = '',
@@ -38,7 +40,7 @@ class RestaurantModel {
       'rating': rating,
       'address': address,
       'categories': categories.map((x) => x.toMap()).toList(),
-      'menus': this..menus.toMap(),
+      'menus': menus.toMap(),
       'isFav': isFav,
       'customerReviews': customerReviews.map((x) => x.toMap()).toList(),
     };
@@ -54,12 +56,12 @@ class RestaurantModel {
       address: map['address'] ?? '',
       rating: map['rating']?.toDouble() ?? 0.0,
       categories: map['categories'] == null
-          ? []
+          ? <CategoriesModel>[]
           : List<CategoriesModel>.from(
               map['categories']?.map((x) => CategoriesModel.fromMap(x)),
             ),
       customerReviews: map['customerReviews'] == null
-          ? []
+          ? <CustomerReviewsModel>[]
           : List<CustomerReviewsModel>.from(
               map['customerReviews']?.map<CustomerReviewsModel>((x) => CustomerReviewsModel.fromMap(x)),
             ),
@@ -69,6 +71,4 @@ class RestaurantModel {
   String toJson() => json.encode(toMap());
 
   factory RestaurantModel.fromJson(String source) => RestaurantModel.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  
 }

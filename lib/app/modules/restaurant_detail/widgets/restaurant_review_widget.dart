@@ -40,6 +40,8 @@ class RestaurantReviewWidget extends StatelessWidget {
                   ),
                   5.heightBox,
                   Container(
+                    color: Colors.white,
+                    width: Get.width,
                     child: ReadMoreText(
                       _data.review,
                       style: TextStyle(fontSize: 12),

@@ -1,8 +1,7 @@
 import 'dart:math';
-
+import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
 import 'package:submission_restaurantapp/app/data/constants/api_keys.dart';
 import 'package:submission_restaurantapp/app/data/model/index.dart';
 
@@ -47,7 +46,7 @@ class ApiServices {
 
   Future<ApiresultModel<List<RestaurantModel>>> getRestaurantByQuery(String query) async {
     try {
-      final _res = await _dio.get('${ApiKeys.restaurantSearch}', queryParameters: {'q': query});
+      final _res = await _dio.get(ApiKeys.restaurantSearch, queryParameters: {'q': query});
       var _result = ApiresultModel<List<RestaurantModel>>.fromMap(_res.data);
       if (_res.statusCode == 200) {
         _result.data = (_res.data['restaurants'] as List).map((e) => RestaurantModel.fromMap(e)).toList();
@@ -61,7 +60,7 @@ class ApiServices {
   Future<ApiresultModel<List<CustomerReviewsModel>>> addRestaurantReview({String id = '', String name = '', String review = ''}) async {
     final _body = {"id": id, "name": name, "review": review};
     try {
-      final _res = await _dio.post('${ApiKeys.restaurantReview}', data: _body);
+      final _res = await _dio.post(ApiKeys.restaurantReview, data: _body);
       var _result = ApiresultModel<List<CustomerReviewsModel>>.fromMap(_res.data);
       if (_res.statusCode == 201) {
         _result.data = (_res.data['customerReviews'] as List).map((e) => CustomerReviewsModel.fromMap(e)).toList();
@@ -80,8 +79,26 @@ class ApiServices {
     return _list;
   }
 
-  RestaurantModel? getRestaurantByRandom(List<RestaurantModel> data) {
-    if (data.isEmpty) return null;
-    return data[Random().nextInt(data.length)];
+  Future<RestaurantModel?> getRestaurantByRandom(List<RestaurantModel> data) async {
+    try {
+      if (data.isNotEmpty) {
+        return data[Random().nextInt(data.length)];
+      } else {
+        final _res = await fetchListRestaurantListAll();
+        return _res.data![Random().nextInt(_res.data!.length)];
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<Uint8List> getImageByUrl(String url) async {
+    Uint8List _result = Uint8List(29);
+    try {
+      final _res = await Dio().get<Uint8List>(url, options: Options(responseType: ResponseType.bytes));
+      return _result = _res.data ?? _result;
+    } catch (e) {
+      return _result;
+    }
   }
 }

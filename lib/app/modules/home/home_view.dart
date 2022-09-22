@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-// import 'package:getxbottombar/getxbottombar.dart';
 import 'package:submission_restaurantapp/app/data/configs/app_configs.dart';
 import 'package:submission_restaurantapp/app/data/constants/keys.dart';
 import 'package:submission_restaurantapp/app/modules/profile/profile_view.dart';
 import 'package:submission_restaurantapp/app/modules/restaurant_favorites/restaurant_favorites_view.dart';
 import 'package:submission_restaurantapp/app/modules/restaurant_list/restaurant_list_view.dart';
-// import 'package:submission_restaurantapp/app/routes/app_pages.dart';
-// import 'package:velocity_x/velocity_x.dart';
 
 import 'home_controller.dart';
 
@@ -31,7 +28,7 @@ class HomeView extends GetView<HomeController> {
       controller: controller.pageController,
       physics: NeverScrollableScrollPhysics(),
       onPageChanged: controller.onTapPageIndex,
-      children: [
+      children: const [
         RestaurantListView(),
         ProfileView(),
         RestaurantFavoritesView(),
@@ -48,7 +45,7 @@ class HomeView extends GetView<HomeController> {
           elevation: 5,
           currentIndex: controller.selectedPageIndex.value,
           onTap: controller.onTapBottomNavBaar,
-          items: [
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home, key: Keys.NAV_RESTAURANT),
               label: 'Restaurant',

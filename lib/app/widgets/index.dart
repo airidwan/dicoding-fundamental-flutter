@@ -7,4 +7,3 @@ export 'input_text_widget.dart';
 export 'loading_widget.dart';
 export 'app_rating_widget.dart';
 export 'restaurant_item_widget.dart';
-

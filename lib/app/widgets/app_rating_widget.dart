@@ -18,6 +18,5 @@ class AppRatingWidget extends StatelessWidget {
       selectionColor: AppColors.lightOrange,
       maxRating: 5,
     );
-   
   }
 }

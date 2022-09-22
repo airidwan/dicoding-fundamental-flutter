@@ -4,14 +4,7 @@ import 'package:submission_restaurantapp/app/modules/restaurant_list/restaurant_
 import 'package:submission_restaurantapp/app/routes/app_pages.dart';
 
 class RestaurantFavoritesController extends GetxController {
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
   void onPressedFavButton(RestaurantModel _data) async {
-    // await LocalFavServices.instance.delete(_data);
-
     RestaurantListController.to.onPressedFavButton(_data);
     update();
   }

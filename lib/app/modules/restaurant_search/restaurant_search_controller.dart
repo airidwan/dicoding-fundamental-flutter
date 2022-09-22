@@ -46,7 +46,7 @@ class RestaurantSearchController extends GetxController with StateMixin {
     change(null, status: RxStatus.loading());
     await ApiServices.i.getRestaurantByQuery(inputController.text).then((value) {
       data(value);
-      change(value,  status: value.founded > 0 ? RxStatus.success() : RxStatus.empty());
+      change(value, status: value.founded > 0 ? RxStatus.success() : RxStatus.empty());
     }, onError: (err) {
       change(null, status: RxStatus.error(err.toString()));
     });

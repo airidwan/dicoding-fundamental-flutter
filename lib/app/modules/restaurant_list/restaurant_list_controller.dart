@@ -23,7 +23,6 @@ class RestaurantListController extends GetxController with StateMixin {
   }
 
   void navToDetail(BuildContext context, RestaurantModel _data) {
-    // Get.toNamed(Routes.RESTAURANT_DETAIL, arguments: _data);
     Navigator.pushNamed(context, Routes.RESTAURANT_DETAIL, arguments: _data);
   }
 

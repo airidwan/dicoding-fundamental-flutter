@@ -1,8 +1,8 @@
 part of 'index.dart';
 
-class DrinkModel {
+class DrinkFoodModel {
   final String name;
-  DrinkModel({
+  DrinkFoodModel({
     this.name = '',
   });
 
@@ -12,13 +12,13 @@ class DrinkModel {
     };
   }
 
-  factory DrinkModel.fromMap(Map<String, dynamic> map) {
-    return DrinkModel(
+  factory DrinkFoodModel.fromMap(Map<String, dynamic> map) {
+    return DrinkFoodModel(
       name: map['name'] ?? '',
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory DrinkModel.fromJson(String source) => DrinkModel.fromMap(json.decode(source));
+  factory DrinkFoodModel.fromJson(String source) => DrinkFoodModel.fromMap(json.decode(source));
 }

@@ -24,7 +24,7 @@ class RestaurantItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _km = Random().nextDouble() * 10.0;
-    return Container(
+    return SizedBox(
       width: Get.width,
       child: Card(
         child: Container(
@@ -33,16 +33,18 @@ class RestaurantItemWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
             onTap: onTap,
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 120,
-                  height: 80,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
-                    child: ImageNetworkWidget(
-                      imageUrl: ApiKeys.urlImageSmall(dataItem.pictureId),
+                Hero(
+                  tag: dataItem.id,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: ImageNetworkWidget(
+                        imageUrl: ApiKeys.urlImageSmall(dataItem.pictureId),
+                        width: 120,
+                        height: 80,
+                      ),
                     ),
                   ),
                 ),

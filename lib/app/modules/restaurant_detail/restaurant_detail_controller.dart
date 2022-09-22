@@ -74,6 +74,7 @@ class RestaurantDetailController extends GetxController with StateMixin {
       LocalFavServices.instance.add(_data);
     }
     _data.isFav = !_data.isFav;
+    update();
   }
 
   Future addReview(String name, String review) async {

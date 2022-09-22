@@ -34,4 +34,6 @@ class HiveServices {
 class BoxKey {
   static const String keyIsLogedIn = 'isLogedIn';
   static const String keyUserName = 'userName';
+  static const String darkTheme = 'dark_theme';
+  static const String dailyReminder = 'daily_reminder';
 }

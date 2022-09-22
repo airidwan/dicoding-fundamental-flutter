@@ -16,7 +16,13 @@ class LocalFavServices {
   }
 
   RestaourantFavModel? getById(String id) {
-    return HiveServices.instance.favLocal.get(id);
+    try {
+      var _box = HiveServices.instance.favLocal;
+      if (!_box.isOpen) HiveServices.instance.open();
+      return HiveServices.instance.favLocal.get(id);
+    } catch (e) {
+      return null;
+    }
   }
 
   Future add(RestaurantModel data) async {

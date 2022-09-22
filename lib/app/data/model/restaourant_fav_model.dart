@@ -11,17 +11,17 @@ part 'restaourant_fav_model.g.dart';
 
 @HiveType(typeId: HiveTypes.restaourantFavModel, adapterName: HiveAdapters.restaourantFavModel)
 class RestaourantFavModel extends HiveObject {
-	@HiveField(RestaourantFavModelFields.id)
+  @HiveField(RestaourantFavModelFields.id)
   String id;
-	@HiveField(RestaourantFavModelFields.name)
+  @HiveField(RestaourantFavModelFields.name)
   String name;
-	@HiveField(RestaourantFavModelFields.description)
+  @HiveField(RestaourantFavModelFields.description)
   String description;
-	@HiveField(RestaourantFavModelFields.pictureId)
+  @HiveField(RestaourantFavModelFields.pictureId)
   String pictureId;
-	@HiveField(RestaourantFavModelFields.city)
+  @HiveField(RestaourantFavModelFields.city)
   String city;
-	@HiveField(RestaourantFavModelFields.rating)
+  @HiveField(RestaourantFavModelFields.rating)
   double rating;
   RestaourantFavModel({
     this.id = '',
@@ -31,9 +31,6 @@ class RestaourantFavModel extends HiveObject {
     this.city = '',
     this.rating = 0.0,
   });
-
-
-
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

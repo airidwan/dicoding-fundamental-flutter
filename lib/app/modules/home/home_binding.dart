@@ -12,6 +12,5 @@ class HomeBinding extends Bindings {
     Get.lazyPut<RestaurantListController>(() => RestaurantListController());
     Get.lazyPut<ProfileController>(() => ProfileController());
     Get.lazyPut<RestaurantFavoritesController>(() => RestaurantFavoritesController());
-    
   }
 }
