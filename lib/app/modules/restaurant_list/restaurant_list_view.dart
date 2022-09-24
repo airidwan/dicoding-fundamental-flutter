@@ -102,14 +102,16 @@ class RestaurantListView extends GetView<RestaurantListController> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
-                    onTap: () => controller.navToDetail(context, _item),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: ImageNetworkWidget(
-                        imageUrl: ApiKeys.urlImageSmall(_item.pictureId),
-                        height: 150,
-                        width: 200,
+                  Flexible(
+                    child: InkWell(
+                      onTap: () => controller.navToDetail(context, _item),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: ImageNetworkWidget(
+                          imageUrl: ApiKeys.urlImageSmall(_item.pictureId),
+                          height: 150,
+                          width: 200,
+                        ),
                       ),
                     ),
                   ),

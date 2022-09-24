@@ -21,65 +21,65 @@ class ProfileView extends GetView<ProfileController> {
       body: Obx(
         (() {
           final _userData = controller.userData.value;
-          return SafeArea(
-            child: SizedBox(
-              width: Get.width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  10.heightBox,
-                  ClipOval(
-                    child: Material(
-                      child: CachedNetworkImage(
-                        imageUrl: _userData.imageUrl,
-                        progressIndicatorBuilder: (context, url, progress) => LoadingWidget(),
-                        errorWidget: (context, url, error) => Assets.noImage.svg(),
-                        width: 180,
-                        height: 180,
-                        fit: BoxFit.cover,
+          return SingleChildScrollView(
+            child: SafeArea(
+              child: SizedBox(
+                width: Get.width,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    10.heightBox,
+                    ClipOval(
+                      child: Material(
+                        child: CachedNetworkImage(
+                          imageUrl: _userData.imageUrl,
+                          progressIndicatorBuilder: (context, url, progress) => LoadingWidget(),
+                          errorWidget: (context, url, error) => Assets.noImage.svg(),
+                          width: 180,
+                          height: 180,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  5.heightBox,
-                  Column(
-                    children: [
-                      _buildTile('Username', _userData.userName),
-                      _buildTile('Full Name', _userData.name),
-                      _buildTile('Email', _userData.email),
-                      _buildTile('Contact', _userData.contact),
-                      _buildTile('Address', _userData.alamat),
-                    ],
-                  ),
-                  5.heightBox,
-                  ValueListenableBuilder(
-                    valueListenable: HiveServices.instance.box.listenable(),
-                    builder: (BuildContext context, box, Widget? child) {
-                      return Center(
-                        child: ListView(
-                          shrinkWrap: true,
-                          physics: ClampingScrollPhysics(),
-                          children: [
-                            _buildSetting(
-                              'Restaurant Notification',
-                              child: Switch.adaptive(
-                                value: controller.localbox.isDailyReminderActive,
-                                onChanged: controller.setDailyReminder,
+                    5.heightBox,
+                    Column(
+                      children: [
+                        _buildTile('Username', _userData.userName),
+                        _buildTile('Full Name', _userData.name),
+                        _buildTile('Email', _userData.email),
+                        _buildTile('Contact', _userData.contact),
+                        _buildTile('Address', _userData.alamat),
+                      ],
+                    ),
+                    5.heightBox,
+                    ValueListenableBuilder(
+                      valueListenable: HiveServices.instance.box.listenable(),
+                      builder: (BuildContext context, box, Widget? child) {
+                        return Center(
+                          child: Column(
+                            children: [
+                              _buildSetting(
+                                'Restaurant Notification',
+                                child: Switch.adaptive(
+                                  value: controller.localbox.isDailyReminderActive,
+                                  onChanged: controller.setDailyReminder,
+                                ),
                               ),
-                            ),
-                            5.heightBox,
-                            _buildSetting(
-                              'Dark theme',
-                              child: Switch.adaptive(
-                                value: controller.localbox.isDarkTheme,
-                                onChanged: controller.changeThemeMode,
+                              5.heightBox,
+                              _buildSetting(
+                                'Dark theme',
+                                child: Switch.adaptive(
+                                  value: controller.localbox.isDarkTheme,
+                                  onChanged: controller.changeThemeMode,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -115,7 +115,8 @@ class ProfileView extends GetView<ProfileController> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            label.text.gray600.make(),
+            Flexible(child: label.text.gray600.overflow(TextOverflow.ellipsis).make()),
+            Spacer(),
             child ?? SizedBox.shrink(),
           ],
         ),
