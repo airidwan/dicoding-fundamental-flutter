@@ -23,8 +23,8 @@ void main() {
     test(
       "test reply api result",
       () {
-        // final _apiReply = RestaurantModel.fromJson(_res);
-        var _result = ApiresultModel<List<RestaurantModel>>.fromJson(_restaurangListReply)..data = ((jsonDecode(_restaurangListReply) as Map<String, dynamic>)['restaurants'] as List).map((e) => RestaurantModel.fromMap(e)).toList();
+        var _result = ApiresultModel<List<RestaurantModel>>.fromJson(_restaurangListReply)
+          ..data = ((jsonDecode(_restaurangListReply) as Map<String, dynamic>)['restaurants'] as List).map((e) => RestaurantModel.fromMap(e)).toList();
         expect(_result.error, false);
         expect(_result.data!.isNotEmpty, true);
         expect(_result.data!.any((e) => e.id == _restaurantId), true);

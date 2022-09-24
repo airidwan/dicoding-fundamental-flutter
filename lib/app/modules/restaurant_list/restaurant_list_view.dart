@@ -115,7 +115,7 @@ class RestaurantListView extends GetView<RestaurantListController> {
                       ),
                     ),
                   ),
-                  8.heightBox,
+                  5.heightBox,
                   _item.name.text.size(12).fontWeight(FontWeight.w600).maxLines(2).overflow(TextOverflow.ellipsis).make(),
                   Row(children: [
                     AppRatingWidget(
