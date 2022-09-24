@@ -3,7 +3,9 @@ import 'package:submission_restaurantapp/app/utils/date_time_helper.dart';
 
 void main() {
   test('test datetime helper', () async {
-    final _datetime = DateTime(2022, 9, DateTime.now().add(Duration(days: 1)).day, 11, 00);
+    final _now = DateTime.now();
+    final _datetime = DateTime(_now.year, _now.month, _now.add(Duration(days: 1)).day, 11);
     expect(DateTimeHelper.format(), _datetime);
+    expect(DateTimeHelper.format().hour, equals(11));
   });
 }

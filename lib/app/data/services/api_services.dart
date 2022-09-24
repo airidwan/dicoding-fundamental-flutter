@@ -11,7 +11,13 @@ class ApiServices {
 
   static ApiServices get i => ApiServices._();
 
-  Dio get _dio => Dio()
+  Dio? dio;
+  ApiServices init({Dio? dio}) {
+    this.dio = dio;
+    return this;
+  }
+
+  Dio get _dio => dio ?? Dio()
     ..options.baseUrl = ApiKeys.baseUrl
     ..options.connectTimeout = 25000
     ..interceptors.add(PrettyDioLogger());
