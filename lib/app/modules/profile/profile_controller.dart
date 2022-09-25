@@ -44,7 +44,7 @@ class ProfileController extends GetxController {
         const Duration(hours: 24),
         1,
         AppBackgroundService.callback,
-        startAt: DateTimeHelper.format(),
+        startAt: DateTimeHelper.format(DateTime.now()),
         exact: true,
         wakeup: true,
       );
